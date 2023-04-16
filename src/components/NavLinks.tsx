@@ -47,7 +47,7 @@ const NavLinks = () => {
       {/* Menu de navegacion para desktop */}
       <ul className="hidden lg:flex lg:items-center lg:gap-x-4">
         {navLinks &&
-          navLinks?.map(({ id, url, label }) => (
+          navLinks?.map(({ id, url, label }: NavLinks) => (
             <li
               key={id}
               className={`${
