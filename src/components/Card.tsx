@@ -2,15 +2,23 @@ import { ChatBubbleBottomCenterIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import React from "react";
 
+type Props = {
+  name: string;
+  review_count: number;
+  rating: number;
+  price: string;
+  location: { city: string };
+  image_url: string;
+};
+
 const Card = ({
-  id,
   name,
   review_count,
   rating,
   price,
   location,
   image_url,
-}) => {
+}: Props): JSX.Element => {
   return (
     <div className="w-full max-w-xs rounded-lg cursor-pointer overflow-hidden">
       <article>
@@ -23,7 +31,7 @@ const Card = ({
             className="lg:rounded-lg brightness-90 rounded-lg transition duration-500 ease-in-out hover:brightness-50"
           />
 
-          <div className="absolute flex items-start justify-between w-full h-16 top-0 bg-black/50 backdrop-blur-sm py-2 px-4">
+          <div className="absolute flex items-start justify-between w-full max-h-28 top-0 bg-black/50 backdrop-blur-sm py-2 px-4">
             <article>
               <h3 className="font-semibold">{name}</h3>
               <small className="text-gray-300">{location.city}</small>
@@ -32,6 +40,7 @@ const Card = ({
               <span className="text-black">{rating}</span>
             </article>
           </div>
+
           <div className="absolute flex items-center justify-between w-full h-16 bottom-0 bg-black/50 backdrop-blur-sm py-2 px-4">
             <article className="flex items-center gap-x-1">
               <span>

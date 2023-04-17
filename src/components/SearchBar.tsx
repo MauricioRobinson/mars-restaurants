@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useRouter, useSearchParams } from "next/navigation";
-
-type Search = string | null;
+import { ChangeEventHandler } from "react";
 
 export interface SearchTargetedValues {
   target: {
@@ -15,24 +14,21 @@ export interface SearchTargetedValues {
   };
 }
 
-const SearchBar = () => {
+const SearchBar = (): JSX.Element => {
   const search = useSearchParams();
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState<Search>(
-    search ? search.get("search") : ""
-  );
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   // const createQueryString = useCallback(() => {
   //   const params = new URLSearchParams(search);
   // }, [search]);
 
-  const handleChange = (e) => {
-    setSearchQuery(e.target.value);
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const { value } = e.target;
+    setSearchQuery(value);
   };
 
-  const handleSubmitSearch = () => {
-    console.log(searchQuery);
-
+  const handleSearch = () => {
     const encodeQuery = encodeURI(searchQuery);
     router.push(
       `/restaurants?search=${encodeQuery}&sort_by=best_match&limit=20`
@@ -50,7 +46,7 @@ const SearchBar = () => {
       />
       <div className="w-12 bg-gray-300 border-l border-l-gray-500 flex items-center justify-center rounded-r-full cursor-pointer transition duration-500 ease-in-out hover:bg-gray-400">
         <button
-          onClick={handleSubmitSearch}
+          onClick={handleSearch}
           className="h-full">
           <MagnifyingGlassIcon className="w-6 h-6 text-black" />
         </button>

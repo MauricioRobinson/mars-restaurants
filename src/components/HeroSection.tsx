@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import mainImage from "../../public/images/main.jpg";
 
-const HeroSection = () => {
+const HeroSection = (): JSX.Element => {
   return (
     <section className="relative lg:grid lg:grid-cols-5 lg:gap-4">
       <figure className="relative h-[350px] sm:h-[450px] md:h-[550px] overflow-hidden lg:col-span-3">

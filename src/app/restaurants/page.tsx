@@ -1,16 +1,18 @@
 import Card from "@/components/Card";
 import React from "react";
-import { useSearchParams } from "next/navigation";
+import RestaurantInfo from "@/components/RestaurantInfo";
 
-export interface Restaurant {
+export interface RestaurantsIntf {
   id: string;
   name: string;
-  reviewCount: number;
+  review_count: number;
   rating: number;
   price: string;
-  location: object;
+  location: { city: string };
+  image_url: string;
 }
 
+// Get all restaurants from API
 const getRestaurants = async () => {
   const res = await fetch(
     `${process.env.PUBLIC_API}/search?location=Miami&sort_by=best_match&limit=5`,
@@ -27,11 +29,13 @@ const getRestaurants = async () => {
 };
 
 const Restaurants = async () => {
-  const { businesses } = await getRestaurants();
+  const { businesses }: { businesses: Array<RestaurantsIntf> } =
+    await getRestaurants();
 
   return (
     <section>
       <main className="lg:max-w-screen-xl mx-auto p-8">
+        <RestaurantInfo />
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center">
           {businesses &&
             businesses?.map(
@@ -46,7 +50,6 @@ const Restaurants = async () => {
               }) => (
                 <Card
                   key={id}
-                  id={id}
                   name={name}
                   review_count={review_count}
                   rating={rating}

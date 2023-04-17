@@ -34,7 +34,7 @@ const navLinks = [
   },
 ];
 
-const NavLinks = () => {
+const NavLinks = (): JSX.Element => {
   const pathName = usePathname();
   const [toggleMenu, setToggleMenu] = useState(false);
 
