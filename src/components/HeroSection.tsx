@@ -16,7 +16,7 @@ const HeroSection = () => {
         />
       </figure>
       <div className="w-full absolute bottom-6 md:bottom-10 lg:relative lg:col-span-2 lg:h-full lg:flex lg:items-center lg:justify-center p-4">
-        <h1 className="text-3xl text-center mx-auto lg:text-left lg:text-5xl font-semibold tracking-wide">
+        <h1 className="text-3xl text-center mx-auto lg:text-left lg:text-7xl font-semibold tracking-wide">
           The magic of{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-yellow-600 font-bold">
             food
