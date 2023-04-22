@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ChangeEventHandler } from "react";
@@ -28,7 +28,7 @@ const SearchBar = (): JSX.Element => {
     setSearchQuery(value);
   };
 
-  const handleSearch = () => {
+  const handleSearch: MouseEventHandler<HTMLButtonElement> = () => {
     const encodeQuery = encodeURI(searchQuery);
     router.push(
       `/restaurants?search=${encodeQuery}&sort_by=best_match&limit=20`
@@ -46,6 +46,7 @@ const SearchBar = (): JSX.Element => {
       />
       <div className="w-12 bg-gray-300 border-l border-l-gray-500 flex items-center justify-center rounded-r-full cursor-pointer transition duration-500 ease-in-out hover:bg-gray-400">
         <button
+          type="button"
           onClick={handleSearch}
           className="h-full">
           <MagnifyingGlassIcon className="w-6 h-6 text-black" />

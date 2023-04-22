@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { MouseEventHandler, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
@@ -36,9 +36,9 @@ const navLinks = [
 
 const NavLinks = (): JSX.Element => {
   const pathName = usePathname();
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
 
-  const handleToggleMenu = () => {
+  const handleToggleMenu: MouseEventHandler<HTMLButtonElement> = () => {
     setToggleMenu((prevState) => !prevState);
   };
 

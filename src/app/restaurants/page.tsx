@@ -15,11 +15,12 @@ export interface RestaurantsIntf {
 // Get all restaurants from API
 const getRestaurants = async () => {
   const res = await fetch(
-    `${process.env.PUBLIC_API}/search?location=Miami&sort_by=best_match&limit=5`,
+    `${process.env.PUBLIC_API}/search?location=Miami&sort_by=best_match&limit=20`,
     {
       headers: {
         Authorization: `Bearer ${process.env.API_KEY}`,
       },
+      cache: "no-store",
     }
   );
 

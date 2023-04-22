@@ -27,6 +27,8 @@ const Card = ({
             src={image_url}
             alt={`${name} restaurant`}
             fill={true}
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
             sizes="(max-width: 1200px) 320px"
             className="lg:rounded-lg brightness-90 rounded-lg transition duration-500 ease-in-out hover:brightness-50"
           />
