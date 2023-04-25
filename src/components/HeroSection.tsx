@@ -1,17 +1,17 @@
 import React from "react";
 import Image from "next/image";
-import mainImage from "../../public/images/main.jpg";
 
 const HeroSection = (): JSX.Element => {
   return (
     <section className="relative lg:grid lg:grid-cols-5 lg:gap-4">
       <figure className="relative h-[320px] sm:h-[450px] md:h-[550px] overflow-hidden lg:col-span-3 lg:h-[600px]">
         <Image
-          src={mainImage}
+          src={
+            "https://res.cloudinary.com/marsdev/image/upload/v1682388050/Projects/mars-restaurants/olenka-kotyk-eqsEZNCm4-c-unsplash_ahvpuz.jpg"
+          }
           alt="Food on the restaurant table"
           fill={true}
           priority={true}
-          placeholder="blur"
           className="lg:rounded-lg brightness-50 lg:brightness-90 object-cover"
         />
       </figure>
