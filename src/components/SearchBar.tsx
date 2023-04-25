@@ -36,19 +36,20 @@ const SearchBar = (): JSX.Element => {
   };
 
   return (
-    <div className="mt-5 grid grid-cols-12">
+    <div className="col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-6 flex">
       <input
         type="search"
-        name="search"
+        name="search button"
+        title="search button"
         onChange={handleChange}
-        className="w-full rounded-l-full bg-gray-300 h-10 outline-none col-span-10 sm:col-span-8 md:col-span-6 lg:col-span-6 lg:h-12 text-black px-3 font-semibold placeholder:text-gray-600 "
+        className="w-full rounded-l-full bg-gray-300 h-10 outline-none text-black px-3 font-semibold placeholder:text-gray-600 "
         placeholder="Search for restaurant name or location"
       />
       <div className="w-12 bg-gray-300 border-l border-l-gray-500 flex items-center justify-center rounded-r-full cursor-pointer transition duration-500 ease-in-out hover:bg-gray-400">
         <button
           type="button"
-          onClick={handleSearch}
-          className="h-full">
+          aria-label="search"
+          onClick={handleSearch}>
           <MagnifyingGlassIcon className="w-6 h-6 text-black" />
         </button>
       </div>

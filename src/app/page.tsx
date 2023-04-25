@@ -12,7 +12,9 @@ export default function Home() {
           😍
         </small>
 
-        <SearchBar />
+        <div className="mt-5 grid grid-cols-12">
+          <SearchBar />
+        </div>
       </main>
     </section>
   );

@@ -1,6 +1,8 @@
 import Card from "@/components/Card";
 import React from "react";
 import RestaurantInfo from "@/components/RestaurantInfo";
+import SearchBar from "@/components/SearchBar";
+import Filter from "@/components/Filter";
 
 export interface RestaurantsIntf {
   id: string;
@@ -12,10 +14,16 @@ export interface RestaurantsIntf {
   image_url: string;
 }
 
-// Get all restaurants from API
-const getRestaurants = async () => {
+const Restaurants = async ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  // Get all restaurants from API
   const res = await fetch(
-    `${process.env.PUBLIC_API}/search?location=Miami&sort_by=best_match&limit=20`,
+    `${process.env.PUBLIC_API}/search?location=${searchParams.search}&sort_by=${
+      searchParams.sort_by || "best_match"
+    }&limit=${searchParams.limit || 20}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.API_KEY}`,
@@ -23,32 +31,27 @@ const getRestaurants = async () => {
       cache: "no-store",
     }
   );
-
-  const restaurants = await res.json();
-
-  return restaurants;
-};
-
-const Restaurants = async () => {
   const { businesses }: { businesses: Array<RestaurantsIntf> } =
-    await getRestaurants();
+    await res.json();
 
   return (
     <section>
       <main className="lg:max-w-screen-xl mx-auto p-8">
+        <div className="mb-5 grid grid-cols-12">
+          <SearchBar />
+        </div>
+        {/* <article className="flex items-center gap-x-4 mb-4">
+          <h3 className="font-semibold text-xl text-gray-400">Sort by: </h3>
+          <Filter />
+        </article> */}
         <RestaurantInfo />
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center mt-20">
           {businesses &&
             businesses?.map(
-              ({
-                id,
-                name,
-                review_count,
-                rating,
-                price,
-                location,
-                image_url,
-              }) => (
+              (
+                { id, name, review_count, rating, price, location, image_url },
+                index
+              ) => (
                 <Card
                   key={id}
                   name={name}
@@ -57,6 +60,7 @@ const Restaurants = async () => {
                   price={price}
                   location={location}
                   image_url={image_url}
+                  index={index}
                 />
               )
             )}

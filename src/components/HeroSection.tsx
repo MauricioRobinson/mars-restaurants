@@ -5,14 +5,14 @@ import mainImage from "../../public/images/main.jpg";
 const HeroSection = (): JSX.Element => {
   return (
     <section className="relative lg:grid lg:grid-cols-5 lg:gap-4">
-      <figure className="relative h-[350px] sm:h-[450px] md:h-[550px] overflow-hidden lg:col-span-3">
+      <figure className="relative h-[320px] sm:h-[450px] md:h-[550px] overflow-hidden lg:col-span-3 lg:h-[600px]">
         <Image
           src={mainImage}
           alt="Food on the restaurant table"
           fill={true}
           priority={true}
           placeholder="blur"
-          className="lg:rounded-lg brightness-50 lg:brightness-90"
+          className="lg:rounded-lg brightness-50 lg:brightness-90 object-cover"
         />
       </figure>
       <div className="w-full absolute bottom-6 md:bottom-10 lg:relative lg:col-span-2 lg:h-full lg:flex lg:items-center lg:justify-center p-4">

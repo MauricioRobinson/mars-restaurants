@@ -2,6 +2,11 @@
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
+export interface Props {
+  search: string | undefined;
+  limit: number | undefined;
+}
+
 const RestaurantInfo = (): JSX.Element => {
   const searchParams = useSearchParams();
 

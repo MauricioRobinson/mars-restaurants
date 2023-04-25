@@ -9,6 +9,7 @@ type Props = {
   price: string;
   location: { city: string };
   image_url: string;
+  index: number;
 };
 
 const Card = ({
@@ -18,19 +19,21 @@ const Card = ({
   price,
   location,
   image_url,
+  index,
 }: Props): JSX.Element => {
   return (
     <div className="w-full max-w-xs rounded-lg cursor-pointer overflow-hidden">
       <article>
-        <figure className="relative w-full h-[400px] overflow-hidden">
+        <figure className="relative w-full h-[350px] overflow-hidden">
           <Image
             src={image_url}
             alt={`${name} restaurant`}
             fill={true}
             placeholder="blur"
+            priority={index <= 5 ? true : false}
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
             sizes="(max-width: 1200px) 320px"
-            className="lg:rounded-lg brightness-90 rounded-lg transition duration-500 ease-in-out hover:brightness-50"
+            className="lg:rounded-lg brightness-90 rounded-lg object-cover transition duration-500 ease-in-out hover:brightness-50"
           />
 
           <div className="absolute flex items-start justify-between w-full max-h-28 top-0 bg-black/50 backdrop-blur-sm py-2 px-4">
